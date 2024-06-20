@@ -17,7 +17,7 @@ class OnboardingView extends GetView<OnboardingController> {
     // Navigator.of(context).pushReplacement(
     //   MaterialPageRoute(builder: (_) => const HomePage()),
     // );
-    Get.offAndToNamed(Routes.HOME);
+    Get.offAndToNamed(Routes.SELECT_CATEGORY);
   }
 
   Widget _buildFullscreenImage() {
@@ -135,7 +135,9 @@ class OnboardingView extends GetView<OnboardingController> {
       next: const Text('Next'),
       done: TextButton(
         iconAlignment: IconAlignment.end,
-        onPressed: () {},
+        onPressed: () {
+          _onIntroEnd(context);
+        },
         child: Text('Get Started'),
         style: TextButton.styleFrom(
             padding: EdgeInsets.symmetric(horizontal: 15),
