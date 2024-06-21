@@ -31,7 +31,11 @@ class OnboardingView extends GetView<OnboardingController> {
   }
 
   Widget _buildImage(String assetName, [double width = double.infinity]) {
-    return Image.asset('assets/$assetName', width: width);
+    return Image.asset(
+      'assets/$assetName',
+      width: width,
+      fit: BoxFit.fill,
+    );
   }
 
   @override
