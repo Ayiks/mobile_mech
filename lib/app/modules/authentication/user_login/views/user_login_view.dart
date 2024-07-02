@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mobile_mechanic/app/routes/app_pages.dart';
 import 'package:mobile_mechanic/app/utils/colors.dart';
 import 'package:mobile_mechanic/app/utils/texts.dart';
 
@@ -58,7 +59,6 @@ class UserLoginView extends GetView<UserLoginController> {
                 const SizedBox(height: 40),
                 GestureDetector(
                   onTap: () {
-                    print('tap');
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -81,7 +81,29 @@ class UserLoginView extends GetView<UserLoginController> {
                                     textAlign: TextAlign.center,
                                   ),
                                   const SizedBox(height: 8),
-                                  const Text('Thank You')
+                                  HeadingText(
+                                    text: 'Thank You',
+                                    size: 15,
+                                  ),
+                                  const SizedBox(height: 8),
+                                  GestureDetector(
+                                    onTap: () =>
+                                        Get.offAndToNamed(Routes.LOGIN),
+                                    child: Container(
+                                      width: 80,
+                                      padding: const EdgeInsets.only(
+                                          top: 15, bottom: 15),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.buttonColor,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: const Center(
+                                          child: Text(
+                                        'OK',
+                                        style: TextStyle(color: Colors.white),
+                                      )),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
