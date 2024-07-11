@@ -55,7 +55,7 @@ class LoginView extends GetView<LoginController> {
             ),
             const SizedBox(height: 40),
             GestureDetector(
-              onTap: () => Get.offAll(Routes.HOME),
+              onTap: () => Get.offAndToNamed(Routes.HOME),
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 15, bottom: 15),
