@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
+import 'package:mobile_mechanic/app/modules/home/widgets/drawerMenuWidget.dart';
 import 'package:mobile_mechanic/app/modules/home/widgets/endDrawer.dart';
+import 'package:mobile_mechanic/app/routes/app_pages.dart';
+import 'package:mobile_mechanic/app/utils/cardComponent.dart';
 import 'package:mobile_mechanic/app/utils/colors.dart';
 import 'package:mobile_mechanic/app/utils/texts.dart';
 
@@ -13,28 +16,14 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: const [
-            Row(),
-            ListTile(
-              leading: CircleAvatar(
-                radius: 50,
-              ),
-              title: Text('Ivy Marian'),
-              subtitle: Text('email@something.com'),
-              trailing: Icon(Icons.edit_note_sharp),
-            )
-          ],
-        ),
-      ),
+      drawer: MenuWidget(),
       appBar: AppBar(
         title: HeadingText(text: 'Hello Ivy'),
         centerTitle: false,
         actions: [
           Builder(
             builder: (context) => IconButton(
-              icon: Icon(Icons.notifications_outlined),
+              icon: const Icon(Icons.notifications_outlined),
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
               },
@@ -42,33 +31,7 @@ class HomeView extends GetView<HomeController> {
           ),
         ],
       ),
-      endDrawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-                decoration: BoxDecoration(
-                    // color: Colors.blue,
-                    ),
-                child: HeadingText(
-                  text: 'Notification',
-                  size: 20,
-                )),
-            ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
-        ),
-      ),
+      endDrawer: EndDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(left: 20, top: 30, right: 20),
@@ -107,7 +70,7 @@ class HomeView extends GetView<HomeController> {
                                 '20% off',
                                 style: TextStyle(color: Colors.white),
                               ))),
-                          Text(
+                          const Text(
                             'on your next visit',
                             softWrap: true,
                           ),
@@ -160,9 +123,9 @@ class HomeView extends GetView<HomeController> {
                             )
                           ],
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: const Color.fromARGB(255, 252, 236, 189)),
@@ -175,7 +138,7 @@ class HomeView extends GetView<HomeController> {
                               size: 45,
                             ),
                             Text(
-                              'Emergency Breakdown',
+                              'Engine',
                               softWrap: true,
                             )
                           ],
@@ -231,15 +194,27 @@ class HomeView extends GetView<HomeController> {
                     text: "Nearby garages",
                     size: 15,
                   ),
-                  Text('See more')
+                  GestureDetector(
+                      onTap: () => Get.toNamed(Routes.GARAGE_LIST),
+                      child: const Text('See more'))
                 ],
               ),
               const SizedBox(height: 10),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 175,
-                color: Colors.black,
-              )
+              ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: ((context, index) {
+                    return CardComponentWidget(
+                      shopName: 'Massa Attah',
+                      location: 'East Legon',
+                      ratings: 4.3,
+                      image: AssetImage('assets/image3.png'),
+                    );
+                  }),
+                  separatorBuilder: ((context, index) {
+                    return const SizedBox(height: 10);
+                  }),
+                  itemCount: 3)
             ],
           ),
         ),
