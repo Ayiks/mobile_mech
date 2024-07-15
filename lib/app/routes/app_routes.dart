@@ -8,6 +8,8 @@ abstract class Routes {
   static const SELECT_CATEGORY = _Paths.SELECT_CATEGORY;
   static const USER_LOGIN = _Paths.USER_LOGIN;
   static const LOGIN = _Paths.LOGIN;
+  static const GARAGE_LIST = _Paths.GARAGE_LIST;
+  static const GARAGE_DETAILS = _Paths.GARAGE_DETAILS;
 }
 
 abstract class _Paths {
@@ -17,4 +19,6 @@ abstract class _Paths {
   static const SELECT_CATEGORY = '/onboarding/select-category';
   static const USER_LOGIN = '/authentication/user-login';
   static const LOGIN = '/login';
+  static const GARAGE_LIST = '/garage-list';
+  static const GARAGE_DETAILS = '/garage-details';
 }

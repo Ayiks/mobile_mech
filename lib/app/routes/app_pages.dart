@@ -4,6 +4,10 @@ import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/user_login/bindings/user_login_binding.dart';
 import '../modules/authentication/user_login/views/user_login_view.dart';
+import '../modules/garage/garage_details/bindings/garage_details_binding.dart';
+import '../modules/garage/garage_details/views/garage_details_view.dart';
+import '../modules/garage/garage_list/bindings/garage_list_binding.dart';
+import '../modules/garage/garage_list/views/garage_list_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
@@ -44,6 +48,16 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.GARAGE_LIST,
+      page: () => const GarageListView(),
+      binding: GarageListBinding(),
+    ),
+    GetPage(
+      name: _Paths.GARAGE_DETAILS,
+      page: () => const GarageDetailsView(),
+      binding: GarageDetailsBinding(),
     ),
   ];
 }
